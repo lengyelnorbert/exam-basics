@@ -1,6 +1,5 @@
 package casino;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -62,7 +61,7 @@ public class Deck {
 
   public Card getRandomDiamondCard() {
     int cardValue = (int) (Math.random() * 13) + 1;
-    Card thisCard = new Card("Diamond", cardValue);
+    Card thisCard = new Card("Diamonds", cardValue);
     return thisCard;
   }
 
@@ -91,7 +90,9 @@ public class Deck {
   }
 
   public String getDeckInfo() {
-    String deckInfo = "Deck" + deckSize + " | ";
+    String deckInfo =
+            "This deck contains " + deckSize + " cards. | " + getDifferentColorCardsAmount()
+                    + " | Detailed list: ";
     for (Card card : deckCardList) {
       deckInfo += card.getCardInfo() + ", ";
     }
@@ -103,5 +104,31 @@ public class Deck {
     deckCardList.remove(drawnCard);
     deckSize--;
     return drawnCard;
+  }
+
+  public String getDifferentColorCardsAmount() {
+    String deckColorInfo = "";
+    int dHearts = 0;
+    int dDiamonds = 0;
+    int dSpades = 0;
+    int dClubs = 0;
+    for (Card card : deckCardList) {
+      if (card.color.equals("Hearts")) {
+        dHearts++;
+      }
+      if (card.color.equals("Diamonds")) {
+        dDiamonds++;
+      }
+      if (card.color.equals("Spades")) {
+        dSpades++;
+      }
+      if (card.color.equals("Clubs")) {
+        dClubs++;
+      }
+    }
+    deckColorInfo =
+            "In the deck there are: " + dHearts + " Hearts, " + dDiamonds + " Diamonds, " + dSpades
+                    + " Spades, " + dClubs + " Clubs";
+    return deckColorInfo;
   }
 }
