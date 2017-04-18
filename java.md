@@ -35,16 +35,16 @@ The application is accepted if:
 ![anatomy](anatomy/AnatomyJava.png)
 
 #### Your answer:
-[add your answer here]   
-1:   
-2:   
-3:   
-4:   
-5:   
-6:   
-7:   
-8:   
+
+1: shows the access level to the method. Might be private / public / protected or none (in this case it means package private)
+2: shows what type of data (at #8) the method will return (String, int, boolean, etc.)   
+3: the name of the method, that is what you will use when you call this method   
+4: the type of the argument what you will call the method with  
+5: the name of the argument what you will use within this method when you wish to refer to the argument the method was called with. The type of this argument is specified at #4.  
+6: body of the method - initializing the return value of the method,  
+7: body of the method - calculating the return value (sum) of the method, depending on the value the method had been called with (n, at #4 and #5)
+8: the returning value of the method. It has to be the same type what had been setup at #2   
 
 ### What is the constructor? When it is used? [2p]
 #### Your answer:
-[add your answer here]
+You use the constructor to create new object within a class. There might be different "type" of constructors, like for example a "default constructor", where the object can be constructed without any arguments, or a lot of other different constructors, where the object "comes to alive" with different type of argumets. These arguments might be given during the construcion (= we call the constructor method with arguments), or they might be setup in the constructor itself (= automaticly added to the object during construcion), or it can be a mixture of these two... Subclass constructor uses it's parent-class constructor as well in certain cases.
