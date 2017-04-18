@@ -1,18 +1,14 @@
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Copy {
 
   public static void main(String[] args) {
-    // This should be the basic replica of the 'cp' command
-    // If ran from the command line without arguments
-    // It should print out the usage:
-    // copy [source] [destination]
-    // When just one argument is provided print out
-    // No destination provided
-    // When both arguments provided and the source is a file
-    // Read all contents from it and write it to the destination
-
     appInput(args);
   }
 
@@ -31,11 +27,12 @@ public class Copy {
   }
 
   public static void copyFile(String origin, String destination) {
-    isFileExist(origin);
-
-
+    if (isFileExist(origin)) {
+      List<String> sourceFileData = new ArrayList<>();
+      sourceFileData = readDataFromSourceFile(origin);
+      writeDataToDestinationFile(destination, sourceFileData);
+    }
   }
-
 
   public static boolean isFileExist(String originalFilePath) {
     File originalFile = new File(originalFilePath);
@@ -44,6 +41,35 @@ public class Copy {
     } else {
       System.out.println("Source file does not exist");
       return false;
+    }
+  }
+
+  public static List<String> readDataFromSourceFile(String originalFilePath) {
+    List<String> sourceFileData = new ArrayList<>();
+    try {
+      Path dataFilePath = Paths.get(originalFilePath);
+      sourceFileData = Files.readAllLines(dataFilePath);
+    } catch (IOException e) {
+      System.out.println("Something went wrong during opening the data file. I'm sorry...");
+      System.exit(0);
+    }
+    return sourceFileData;
+  }
+
+  public static void writeDataToDestinationFile(String destinationFile, List<String> dataToWrite) {
+    File destFile = new File(destinationFile);
+    if (!destFile.exists()) {
+      try {
+        destFile.createNewFile();
+      } catch (IOException e) {
+        System.out.println("Something went wrong during creating the data file. I'm sorry...");
+      }
+    }
+    Path destFilePath = Paths.get(destinationFile);
+    try {
+      Files.write(destFilePath, dataToWrite);
+    } catch (IOException e) {
+      System.out.println("Something went wrong during writing ito the data file. I'm sorry...");
     }
   }
 }
