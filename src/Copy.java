@@ -1,3 +1,6 @@
+import java.io.File;
+import java.io.IOException;
+
 public class Copy {
 
   public static void main(String[] args) {
@@ -16,21 +19,31 @@ public class Copy {
   public static void appInput(String[] args) {
     if (args.length == 0) {
       System.out.println("copy [source] [destination]");
-    }
-    else if (args.length == 1){
+    } else if (args.length == 1) {
       System.out.println("No destination provided");
-    }
-    else if (args.length == 2){
+    } else if (args.length == 2) {
       String origin = args[0];
       String destination = args[1];
       copyFile(origin, destination);
-    }
-    else {
+    } else {
       System.out.println("Invalid input");
     }
   }
-  public static void copyFile(String origin, String destination){
 
-    
+  public static void copyFile(String origin, String destination) {
+    isFileExist(origin);
+
+
+  }
+
+
+  public static boolean isFileExist(String originalFilePath) {
+    File originalFile = new File(originalFilePath);
+    if (originalFile.exists()) {
+      return true;
+    } else {
+      System.out.println("Source file does not exist");
+      return false;
+    }
   }
 }
