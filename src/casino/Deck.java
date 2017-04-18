@@ -14,7 +14,6 @@ public class Deck {
     createNewDeck(deckSize);
   }
 
-
   public void createNewDeck(int deckSize) {
     deckCardList = new ArrayList<>();
     int deckSizeInTheMethod = deckSize;
@@ -37,7 +36,6 @@ public class Deck {
     for (int i = 0; i < deckSizeInTheMethod; i++) {
       addRandomCardToTheDeck();
     }
-
   }
 
   public void addRandomCardToTheDeck() {
@@ -80,10 +78,10 @@ public class Deck {
     return thisCard;
   }
 
-  public void shuffle(){
+  public void shuffle() {
     int deckSizeInTheMethod = deckSize;
     List<Card> shuffledCardList = new ArrayList<>();
-    while (deckSizeInTheMethod > 0){
+    while (deckSizeInTheMethod > 0) {
       int randomCardToPick = (int) (Math.random() * deckSizeInTheMethod);
       shuffledCardList.add(deckCardList.get(randomCardToPick));
       deckCardList.remove(randomCardToPick);
@@ -92,11 +90,18 @@ public class Deck {
     deckCardList = shuffledCardList;
   }
 
-  public String getDeckInfo(){
-    String deckInfo = "";
-    for (Card card: deckCardList){
-      deckInfo += card.color + " " + card.value + ", ";
+  public String getDeckInfo() {
+    String deckInfo = "Deck" + deckSize + " | ";
+    for (Card card : deckCardList) {
+      deckInfo += card.getCardInfo() + ", ";
     }
     return deckInfo;
+  }
+
+  public Card draw() {
+    Card drawnCard = deckCardList.get(0);
+    deckCardList.remove(drawnCard);
+    deckSize--;
+    return drawnCard;
   }
 }
