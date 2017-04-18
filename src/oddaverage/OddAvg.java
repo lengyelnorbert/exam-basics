@@ -17,7 +17,7 @@ public class OddAvg {
   public static double oddAverage(List<Integer> originalList) {
     List<Integer> temporalyListForOddNumbers = new ArrayList<>();
     double fullValueOfOddNumbers = 0;
-    double averageValueOfOddNumbers = 0;
+    double averageValueOfOddNumbers;
     for (int i = 0; i < originalList.size(); i++) {
       if (originalList.get(i) % 2 == 1) {
         temporalyListForOddNumbers.add(originalList.get(i));

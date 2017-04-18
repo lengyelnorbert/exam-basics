@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
-
 class OddAvgTest {
 
   @Test
@@ -38,7 +37,4 @@ class OddAvgTest {
     testlist.add(52);
     assertTrue(15 == OddAvg.oddAverage(testlist));
   }
-
-
-
 }
