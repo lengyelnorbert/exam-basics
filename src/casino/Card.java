@@ -10,4 +10,9 @@ public class Card {
     this.value = value;
   }
 
+  public String getCardInfo(){
+    String cardInfo = color + " " + value;
+    return cardInfo;
+  }
+
 }
